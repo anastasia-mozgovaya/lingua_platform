@@ -181,7 +181,7 @@ body {
   background: #156b5d;
 }
 
-/* Flashcard Styles */
+
 .flashcard-container {
   text-align: center;
 }
@@ -285,7 +285,7 @@ body {
   background: #c29448;
 }
 
-/* Modal Styles */
+
 .modal {
   display: none;
   position: fixed;
@@ -433,7 +433,7 @@ body {
   }
 }
 
-/* Стили для вкладок создания */
+
 .create-modal {
   max-width: 550px;
 }
@@ -478,7 +478,7 @@ textarea.select-input {
   font-family: inherit;
 }
 
-/* Стили для уведомлений */
+
 .notification {
   position: fixed;
   top: 20px;
@@ -523,7 +523,7 @@ textarea.select-input {
   }
 }
 
-/* Стили для блоков повторения в профиле */
+
 .repetition-container {
   margin-top: 1.5rem;
   border-top: 1px solid #e2e8f0;
@@ -545,12 +545,12 @@ textarea.select-input {
   transform: translateX(3px);
 }
 
-/* Дополнительные стили для кнопок */
+
 .btn-repeat, .btn-start {
   font-weight: 500;
 }
 
-/* Стиль для выключенных кнопок */
+
 .btn-primary:disabled, .btn-repeat:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -561,7 +561,7 @@ textarea.select-input {
   transform: none;
 }
 
-/* Стили для блоков повторения в профиле (бирюзовая тема) */
+
 .repetition-container {
   margin-top: 1.5rem;
   border-top: 1px solid #e2e8f0;
@@ -584,7 +584,7 @@ textarea.select-input {
   transform: translateX(3px);
 }
 
-/* Стили для карточек статистики в профиле */
+
 .stats-card {
   background: white;
   border: 1px solid #e2e8f0;
@@ -596,7 +596,7 @@ textarea.select-input {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Стили для активных кнопок повторения */
+
 .btn-repetition-active {
   background: #1a7f6e;
   color: white;
@@ -629,7 +629,7 @@ textarea.select-input {
   background: #b8c4ce;
 }
 
-/* Стили для disabled кнопок */
+
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -640,7 +640,7 @@ button:disabled:hover {
   box-shadow: none;
 }
 
-/* Адаптация для мобильных устройств */
+
 @media (max-width: 640px) {
   .stats-card {
     min-width: 80px;
@@ -655,7 +655,7 @@ button:disabled:hover {
   }
 }
 
-/* Стили для кнопки выхода в профиле */
+
 .logout-btn {
   background: #e8edf0;
   color: #4a6a78;
@@ -680,7 +680,7 @@ button:disabled:hover {
   transform: translateY(0);
 }
 
-/* Альтернативный стиль - если хотите более заметную кнопку */
+
 .logout-btn-accent {
   background: #e0735c;
   color: white;
@@ -701,7 +701,7 @@ button:disabled:hover {
   transform: translateY(-1px);
 }
 
-/* Стили для кнопки выхода в профиле - с повышенным приоритетом */
+
 button.logout-btn {
   background: #e8edf0 !important;
   color: #4a6a78 !important;
