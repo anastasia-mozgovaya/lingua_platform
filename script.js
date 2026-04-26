@@ -1,4 +1,4 @@
-// Глобальные переменные
+
 let currentDeck = [];
 let currentCardIndex = 0;
 let currentCardData = null;
@@ -11,7 +11,6 @@ let userTopics = [];
 let userLessons = [];
 let userCards = [];
 
-// Каждая колода содержит карточки и время следующего повторения
 let repetitionDecks = {
     forgot: { name: "Не запомнил", cards: [], interval: 1 },
     normal: { name: "Нормально", cards: [], interval: 12 },
@@ -24,7 +23,6 @@ let appSettings = { forgot: 1, normal: 12, good: 24, great: 96 };
 let lessonProgress = {};
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
-// DOM элементы
 const mainContentDiv = document.getElementById('mainContent');
 const studySidebarBtn = document.getElementById('studyBtnSidebar');
 const repeatBtn = document.getElementById('repeatBtn');
@@ -36,7 +34,6 @@ const saveTopicButton = document.getElementById('saveTopicButton');
 const saveLessonButton = document.getElementById('saveLessonButton');
 const authScreen = document.getElementById('authScreen');
 
-// --- СИСТЕМА РЕГИСТРАЦИИ/АВТОРИЗАЦИИ ---
 let isLoginMode = true;
 
 function showLoginForm() {
@@ -71,7 +68,7 @@ function handleAuthSubmit(e) {
     const password = document.getElementById('authPass').value;
     
     if (isLoginMode) {
-        // Вход
+
         const user = users.find(u => u.name === name && u.password === password);
         if (user) {
             currentUser = user;
@@ -84,7 +81,7 @@ function handleAuthSubmit(e) {
             showNotification('Неверное имя или пароль!', 'error');
         }
     } else {
-        // Регистрация
+
         const email = document.getElementById('authEmail').value.trim();
         if (users.find(u => u.name === name)) {
             showNotification('Пользователь с таким именем уже существует!', 'error');
@@ -122,7 +119,7 @@ function toggleAuthMode() {
     }
 }
 
-// Загрузка данных пользователя
+
 function loadUserData() {
     if (!currentUser) return;
     
@@ -146,7 +143,6 @@ function loadUserData() {
     renderRecentWords();
 }
 
-// Сохранение данных пользователя
 function saveUserData() {
     if (!currentUser) return;
     
@@ -159,7 +155,6 @@ function saveUserData() {
     localStorage.setItem(`recentWords_${currentUser.id}`, JSON.stringify(recentWords));
 }
 
-// Выход из аккаунта
 function logout() {
     saveUserData();
     currentUser = null;
@@ -182,11 +177,9 @@ function logout() {
     authScreen.style.display = 'flex';
 }
 
-// --- ОБНОВЛЕННАЯ ФУНКЦИЯ handleRating ---
 function handleRating(rating) {
     if (!currentCardData) return;
 
-    // Сохраняем прогресс урока
     const currentTopic = document.getElementById('topicSelect')?.value || 'unknown';
     const currentLesson = document.getElementById('lessonSelect')?.value || 'unknown';
     const lessonKey = `${currentTopic}_lesson_${currentLesson}`;
@@ -203,7 +196,6 @@ function handleRating(rating) {
     lessonProgress[lessonKey].lastStudied = Date.now();
     saveUserData();
 
-    // Создаем копию карточки для повторения (без example)
     const cardToRepeat = { 
         ...currentCardData, 
         lastRated: Date.now(),
@@ -218,7 +210,6 @@ function handleRating(rating) {
     showNotification(`Слово "${currentCardData.word}" добавлено в колоду "${repetitionDecks[rating].name}"`);
 }
 
-// Проверка: пора ли повторять колоду?
 function isTimeUp(deckKey) {
     const deck = repetitionDecks[deckKey];
     if (deck.cards.length === 0) return false;
@@ -229,7 +220,6 @@ function isTimeUp(deckKey) {
     return hoursPassed >= (appSettings[deckKey] || deck.interval);
 }
 
-// Рендер блоков повторения
 function renderRepetitionBlocks() {
     const colors = {
         forgot: { bg: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', border: '#ff4b5c', text: '#721c24' },
@@ -299,7 +289,6 @@ function renderRepetitionBlocks() {
     `;
 }
 
-// Запуск повторения
 function startRepetition(deckKey) {
     const deck = repetitionDecks[deckKey];
     if (deck.cards.length === 0) {
@@ -366,7 +355,7 @@ function renderProfileTab() {
     studyActive = false;
 }
 
-// Настройки
+
 function renderSettingsTab() {
     mainContentDiv.innerHTML = `
       <div class="welcome-screen" style="max-width: 500px; margin: 0 auto;">
@@ -413,7 +402,7 @@ function renderSettingsTab() {
     studyActive = false;
 }
 
-// --- ОСТАЛЬНЫЕ ФУНКЦИИ (с сохранением в пользовательское хранилище) ---
+
 async function updateTopicSelects() {
     const topicSelects = ['topicSelect', 'lessonTopicSelect', 'cardTopicSelect'];
     const defaultTopics = [
@@ -442,7 +431,6 @@ async function updateTopicSelects() {
         }
     });
     
-    // Обновляем выбор уроков для всех селектов
     const currentTopic = document.getElementById('topicSelect')?.value;
     if (currentTopic) {
         await updateDeckLessonSelect(currentTopic);
@@ -458,13 +446,13 @@ async function updateLessonSelects() {
     
     const currentValue = lessonSelect.value;
     
-    // Получаем доступные уроки из JSON
+
     const availableLessons = await getAvailableLessons(topic);
     const userLessonsForTopic = userLessons.filter(l => l.topicId === topic);
     
     lessonSelect.innerHTML = '';
     
-    // Добавляем уроки из JSON
+
     availableLessons.forEach(lesson => {
         const option = document.createElement('option');
         option.value = lesson.number;
@@ -472,7 +460,7 @@ async function updateLessonSelects() {
         lessonSelect.appendChild(option);
     });
     
-    // Добавляем пользовательские уроки
+
     userLessonsForTopic.forEach(lesson => {
         const option = document.createElement('option');
         option.value = lesson.number;
@@ -489,15 +477,14 @@ async function updateDeckLessonSelect(topicId) {
     
     const currentValue = lessonSelect.value;
     
-    // Получаем доступные уроки из JSON файлов
     const availableLessons = await getAvailableLessons(topicId);
     
-    // Добавляем пользовательские уроки
+   
     const userLessonsForTopic = userLessons.filter(l => l.topicId === topicId);
     
     lessonSelect.innerHTML = '';
     
-    // Добавляем уроки из JSON
+    
     availableLessons.forEach(lesson => {
         const option = document.createElement('option');
         option.value = lesson.number;
@@ -505,7 +492,6 @@ async function updateDeckLessonSelect(topicId) {
         lessonSelect.appendChild(option);
     });
     
-    // Добавляем пользовательские уроки
     userLessonsForTopic.forEach(lesson => {
         const option = document.createElement('option');
         option.value = lesson.number;
@@ -651,7 +637,7 @@ async function loadDeck(topic, lesson) {
         console.error(`❌ Ошибка загрузки JSON:`, error);
     }
     
-    // Добавляем пользовательские карточки
+ 
     const userCardsForLesson = userCards.filter(c => 
         c.topic === topic && c.lesson === lessonNum
     );
@@ -669,7 +655,7 @@ async function loadDeck(topic, lesson) {
         });
     }
     
-    // Запасной вариант
+ 
     if (cards.length === 0) {
         console.warn(`Нет карточек, используем запасной вариант`);
         const fallbackCards = {
@@ -803,7 +789,7 @@ function closeModal() {
     if (modal) modal.style.display = 'none';
 }
 
-// Исправленная функция startStudy с диагностикой
+
 async function startStudy() {
     const topic = document.getElementById('topicSelect').value;
     const lesson = document.getElementById('lessonSelect').value;
@@ -859,7 +845,7 @@ function initCreateTabs() {
     });
 }
 
-// Инициализация
+
 async function init() {
     showLoginForm();
     
