@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinguaCards - Изучение языков</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Модальное окно авторизации - обновленный стиль -->
+  <div id="authScreen" style="position: fixed; inset: 0; background: #e8f4f8; display: flex; align-items: center; justify-content: center; z-index: 10000;">
+    <div style="background: white; padding: 2rem; border-radius: 20px; width: 350px; text-align: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+      <h2 id="authTitle" style="margin-bottom: 20px; color: #2c3e42; font-weight: 500;">Вход</h2>
+      <form id="authForm">
+        <input type="text" id="authName" placeholder="Имя" required style="width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #dce5e9; border-radius: 10px; font-size: 0.95rem;">
+        <div id="emailField" style="display: none;">
+          <input type="email" id="authEmail" placeholder="Email" style="width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #dce5e9; border-radius: 10px; font-size: 0.95rem;">
+        </div>
+        <input type="password" id="authPass" placeholder="Пароль" required style="width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #dce5e9; border-radius: 10px; font-size: 0.95rem;">
+        <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; margin-top: 10px;">Войти</button>
+      </form>
+      <p id="toggleAuthText" style="margin-top: 20px; font-size: 0.85rem; color: #7a8e9a;">
+        Нет аккаунта? <span style="color: #1a7f6e; cursor: pointer;">Регистрация</span>
+      </p>
+    </div>
+  </div>
+
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="nav-link" data-tab="decks">Колоды</a>
+      <a href="#" class="nav-link" data-tab="create">Создать</a>
+      <a href="#" class="nav-link" data-tab="settings">Настройки</a>
+      <a href="#" class="nav-link active" data-tab="profile">Профиль</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="main-content" id="mainContent">
+    </section>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Последнее изученное</h2>
+      </div>
+      <div class="scroll-container" id="recentWordsList">
+        <div class="word-block empty">
+          <p>Здесь появятся ваши последние изученные слова</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="deckModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Выберите параметры колоды</h3>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="topicSelect">Тема:</label>
+          <select id="topicSelect" class="select-input">
+            <option value="food">🍕 Еда</option>
+            <option value="travel">✈️ Путешествия</option>
+            <option value="human_anatomy">🧠 Организм человека</option>
+            <option value="animals">🐕 Животные</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="lessonSelect">Урок:</label>
+          <select id="lessonSelect" class="select-input">
+            <option value="1">Урок 1</option>
+            <option value="2">Урок 2</option>
+            <option value="3">Урок 3</option>
+            <option value="4">Урок 4</option>
+            <option value="5">Урок 5</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="studyButton" class="btn-primary">Изучить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="createCardModal" class="modal">
+    <div class="modal-content create-modal">
+      <div class="modal-header">
+        <div class="create-tabs">
+          <button class="create-tab active" data-create-tab="topic">Создать тему</button>
+          <button class="create-tab" data-create-tab="lesson">Создать урок</button>
+          <button class="create-tab" data-create-tab="card">Создать карточку</button>
+        </div>
+        <span class="close close-create">&times;</span>
+      </div>
+      
+      <div class="create-tab-content active" id="createTopicTab">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="topicName">Название темы:</label>
+            <input type="text" id="topicName" placeholder="Например: Природа" class="select-input">
+          </div>
+          <div class="form-group">
+            <label for="topicIcon">Иконка темы (эмодзи):</label>
+            <input type="text" id="topicIcon" maxlength="2" class="select-input">
+          </div>
+          <div class="form-group">
+            <label for="topicDescription">Описание темы (необязательно):</label>
+            <textarea id="topicDescription" rows="3" placeholder="Опишите тему..." class="select-input"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="saveTopicButton" class="btn-primary">Создать тему</button>
+        </div>
+      </div>
+
+      <div class="create-tab-content" id="createLessonTab">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="lessonTopicSelect">Выберите тему:</label>
+            <select id="lessonTopicSelect" class="select-input">
+              <option value="food">Еда</option>
+              <option value="travel">Путешествия</option>
+              <option value="human_anatomy">Организм человека</option>
+              <option value="animals">Животные</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lessonName">Название урока:</label>
+            <input type="text" id="lessonName" placeholder="Например: Овощи" class="select-input">
+          </div>
+          <div class="form-group">
+            <label for="lessonNumber">Номер урока:</label>
+            <input type="number" id="lessonNumber" min="1" max="20" value="1" class="select-input">
+          </div>
+          <div class="form-group">
+            <label for="lessonDescription">Описание урока:</label>
+            <textarea id="lessonDescription" rows="2" placeholder="Краткое описание урока..." class="select-input"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="saveLessonButton" class="btn-primary">Создать урок</button>
+        </div>
+      </div>
+
+     <div class="create-tab-content" id="createCardTab">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="cardTopicSelect">Тема:</label>
+      <select id="cardTopicSelect" class="select-input">
+        <option value="food">Еда</option>
+        <option value="travel">Путешествия</option>
+        <option value="human_anatomy">Организм человека</option>
+        <option value="animals">Животные</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cardLessonSelect">Урок:</label>
+      <select id="cardLessonSelect" class="select-input">
+        <option value="1">Урок 1</option>
+        <option value="2">Урок 2</option>
+        <option value="3">Урок 3</option>
+        <option value="4">Урок 4</option>
+        <option value="5">Урок 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cardWord">Слово (на русском):</label>
+      <input type="text" id="cardWord" placeholder="Например: яблоко" class="select-input">
+    </div>
+    <div class="form-group">
+      <label for="cardTranslation">Перевод (на английском):</label>
+      <input type="text" id="cardTranslation" placeholder="Например: apple" class="select-input">
+    </div>
+    <div class="form-group">
+      <label for="cardImageFile">Изображение:</label>
+      <input type="file" id="cardImageFile" accept="image/jpeg,image/jpg,image/png" class="select-input">
+      <small class="help-text">Поддерживаются форматы: JPG, PNG</small>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="saveCardButton" class="btn-primary">Создать карточку</button>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

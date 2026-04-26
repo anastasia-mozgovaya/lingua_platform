@@ -1,0 +1,30 @@
+{
+  "lessonId": 1,
+  "name": "Транспорт",
+  "cards": [
+    {
+      "id": 1,
+      "word": "мозг",
+      "translation": "brain",
+      "image": "photo/human_anatomy/1.jpg"
+    },
+    {
+      "id": 2,
+      "word": "нога",
+      "translation": "leg",
+      "image": "photo/human_anatomy/2.jpg"
+    },
+    {
+      "id": 3,
+      "word": "глаз",
+      "translation": "eye",
+      "image": "photo/human_anatomy/3.jpg"
+    },
+    {
+      "id": 4,
+      "word": "ладонь",
+      "translation": "palm",
+      "image": "photo/human_anatomy/4.jpg"
+    }
+  ]
+}

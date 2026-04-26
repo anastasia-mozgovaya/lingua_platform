@@ -1,0 +1,30 @@
+{
+  "lessonId": 1,
+  "name": "Транспорт",
+  "cards": [
+    {
+      "id": 1,
+      "word": "сердце",
+      "translation": "heart",
+      "image": "photo/human_anatomy/5.jpg"
+    },
+    {
+      "id": 2,
+      "word": "нос",
+      "translation": "nose",
+      "image": "photo/human_anatomy/6.jpg"
+    },
+    {
+      "id": 3,
+      "word": "волосы",
+      "translation": "hair",
+      "image": "photo/human_anatomy/7.jpg"
+    },
+    {
+      "id": 4,
+      "word": "ухо",
+      "translation": "ear",
+      "image": "photo/human_anatomy/8.jpg"
+    }
+  ]
+}

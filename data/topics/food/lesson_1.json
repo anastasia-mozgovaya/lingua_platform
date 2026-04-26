@@ -1,0 +1,36 @@
+{
+  "lessonId": 1,
+  "name": "Основные продукты",
+  "cards": [
+    {
+      "id": 1,
+      "word": "мясо",
+      "translation": "meat",
+      "image": "photo/food/1.jpg"
+    },
+    {
+      "id": 2,
+      "word": "хлеб",
+      "translation": "bread",
+      "image": "photo/food/2.jpg"
+    },
+    {
+      "id": 3,
+      "word": "чай",
+      "translation": "tea",
+      "image": "photo/food/3.jpg"
+    },
+    {
+      "id": 4,
+      "word": "мед",
+      "translation": "honey",
+      "image": "photo/food/4.jpg"
+    },
+    {
+      "id": 5,
+      "word": "кофе",
+      "translation": "coffee",
+      "image": "photo/food/5.jpg"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "lessonId": 1,
+  "name": "Основные продукты",
+  "cards": [
+    {
+      "id": 1,
+      "word": "петух",
+      "translation": "rooster",
+      "image": "photo/animals/5.jpg"
+    },
+    {
+      "id": 2,
+      "word": "свинья",
+      "translation": "pig",
+      "image": "photo/animals/6.jpg"
+    },
+    {
+      "id": 3,
+      "word": "тигр",
+      "translation": "tiger",
+      "image": "photo/animals/7.jpg"
+    },
+    {
+      "id": 4,
+      "word": "кит",
+      "translation": "whale",
+      "image": "photo/animals/8.jpg"
+    }
+  ]
+}

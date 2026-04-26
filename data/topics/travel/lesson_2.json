@@ -1,0 +1,31 @@
+{
+  "lessonId": 1,
+  "name": "Транспорт",
+  "cards": [
+{
+      "id": 5,
+      "word": "Китай",
+      "translation": "China",
+      "image": "photo/travel/5.jpg"
+    },
+    {
+      "id": 6,
+      "word": "дорога",
+      "translation": "road",
+      "image": "photo/travel/6.jpg"
+    },
+    {
+      "id": 7,
+      "word": "острова",
+      "translation": "islands",
+      "image": "photo/travel/7.jpg",
+      "example": "Мотоцикл быстро разгоняется"
+    },
+    {
+      "id": 8,
+      "word": "пароход",
+      "translation": "steamship",
+      "image": "photo/travel/8.jpg"
+    }
+  ]
+}

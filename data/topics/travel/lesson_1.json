@@ -1,0 +1,30 @@
+{
+  "lessonId": 1,
+  "name": "Транспорт",
+  "cards": [
+    {
+      "id": 1,
+      "word": "Москва",
+      "translation": "Moscow",
+      "image": "photo/travel/1.jpg"
+    },
+    {
+      "id": 2,
+      "word": "Нью-Йорк",
+      "translation": "New York",
+      "image": "photo/travel/2.jpg"
+    },
+    {
+      "id": 3,
+      "word": "Париж",
+      "translation": "Paris",
+      "image": "photo/travel/3.jpg"
+    },
+    {
+      "id": 4,
+      "word": "Рим",
+      "translation": "Rome",
+      "image": "photo/travel/4.jpg"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "lessonId": 1,
+  "name": "Основные продукты",
+  "cards": [
+    {
+      "id": 1,
+      "word": "корова",
+      "translation": "cow",
+      "image": "photo/animals/1.jpg"
+    },
+    {
+      "id": 2,
+      "word": "кот",
+      "translation": "cat",
+      "image": "photo/animals/2.jpg"
+    },
+    {
+      "id": 3,
+      "word": "собака",
+      "translation": "dog",
+      "image": "photo/animals/3.jpg"
+    },
+    {
+      "id": 4,
+      "word": "овца",
+      "translation": "sheep",
+      "image": "photo/animals/4.jpg"
+    }
+  ]
+}

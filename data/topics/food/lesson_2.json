@@ -1,0 +1,39 @@
+{
+  "lessonId": 2,
+  "name": "Овощи и фрукты",
+  "cards": [
+    {
+      "id": 1,
+      "word": "молоко",
+      "translation": "milk",
+      "image": "photo/food/9.jpg"
+     
+    },
+    {
+      "id": 2,
+      "word": "попкорн",
+      "translation": "popcorn",
+      "image": "photo/food/10.jpg"
+
+    },
+    {
+      "id": 3,
+      "word": "кукуруза",
+      "translation": "corn",
+      "image": "photo/food/6.jpg"
+    },
+    {
+      "id": 4,
+      "word": "пельмени",
+      "translation": "dumplings",
+      "image": "photo/food/7.jpg"
+    },
+    {
+      "id": 5,
+      "word": "пицца",
+      "translation": "pizza",
+      "image": "photo/food/8.jpg"
+    }
+    
+  ]
+}
